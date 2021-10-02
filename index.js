@@ -5,8 +5,11 @@
  */
 function sum(numbers) {
     // TODO: Add your solution here.
-    const result = numbers.reduce((total, curVal) => total + curVal);
-    return result;
+    if (numbers.length > 0) {
+        const result = numbers.reduce((total, curVal) => total + curVal);
+        return result;
+    }
+    return 0;
 }
 
 /**
@@ -30,6 +33,12 @@ function doubleNumbers(numbers) {
  */
 function doubleCharacters(chars) {
     // TODO: Add your solution here.
+    let doubleChar = [];
+    for (let i = 0; i < chars.length; i++) {
+        doubleChar.push(chars[i]);
+        doubleChar.push(chars[i]);
+    }
+    return doubleChar.join("");
 }
 
 /**
@@ -39,6 +48,10 @@ function doubleCharacters(chars) {
  */
 function backwardsify(array) {
     // TODO: Add your solution here.
+    if (array.length > 0) {
+        return array.reverse();
+    }
+    return {};
 }
 
 /**
@@ -46,8 +59,16 @@ function backwardsify(array) {
  * `interleave(list1, list2): Array`
  * Should return a combined single array, with individual values alternating between list1 & list2.
  */
-function interleave(list1, list2) {
-    // TODO: Add your solution here.
+function interleave(arr1, arr2) {
+    if (arr1.length == arr2.length) {
+        let merge = [];
+        for (let i = 0; i < arr1.length; i++) {
+            merge.push(arr1[i], arr2[i]);
+        }
+
+        return merge;
+    }
+    return null;
 }
 
 /**
@@ -84,7 +105,8 @@ function countByFirstLetter(words) {
  * @instructions
  * `groupByFirstLetter(words): Object`
  * Given an array of words, return an object using *lowercase* letters as keys.
- * The key value should be an array with only the words sharing a starting character.
+ * The key value should be an array with only
+ * the words sharing a starting character.
  *
  * @example
  *
