@@ -77,13 +77,20 @@ function interleave(arr1, arr2) {
  * Return array of `count` length where each element is set to `fillString`
  */
 function makeRange(count, fillString) {
-    // TODO: Add your solution here.
+    let result = [];
+    let length = parseInt(count);
+
+    for (let i = 0; i < length; i++) {
+        result.push(fillString);
+    }
+    return result;
 }
 
 /**
  * @instuction
  * `countByFirstLetter(words): Object`
- * Given an array of words, return an object using *lowercase* letters as keys. The value should be a Number, with the count of words with same starting character.
+ * Given an array of words, return an object using *lowercase* letters as keys.
+ * The value should be a Number, with the count of words with same starting character.
  *
  * @example
  *
