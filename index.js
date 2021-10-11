@@ -104,8 +104,17 @@ function makeRange(count, fillString) {
  * // }
  */
 
-function countByFirstLetter(words) {
-    // TODO: Add your solution here.
+function countByFirstLetter(arr) {
+    return arr.reduce((tally, curEl) => {
+        let firstL = curEl[0];
+        console.log(firstL);
+        if (tally[firstL]) {
+            tally[firstL]++;
+        } else {
+            tally[firstL] = 1;
+        }
+        return tally;
+    }, {});
 }
 
 /**
