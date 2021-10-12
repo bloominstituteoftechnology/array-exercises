@@ -137,10 +137,21 @@ function countByFirstLetter(arr) {
  *
  */
 
-function groupByFirstLetter(words) {
-    // TODO: Add your solution here.
+function groupByFirstLetter(arr) {
+    if (arr.length > 0) {
+        return arr.reduce((tally, curEl) => {
+            let firstL = curEl[0].toLowerCase();
+            console.log(firstL);
+            if (!tally[firstL]) {
+                tally[firstL] = [];
+            }
+            tally[firstL].push(curEl.toLowerCase());
+            return tally;
+        }, {});
+    } else {
+        return {};
+    }
 }
-
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
