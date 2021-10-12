@@ -1,11 +1,15 @@
-
 /**
  * @instructions
  * `sum(numbers): Number`
  * Given an array of numbers, return a sum total of all the numbers.
  */
-function sum (numbers) {
-  // TODO: Add your solution here.
+function sum(numbers) {
+    // TODO: Add your solution here.
+    if (numbers.length > 0) {
+        const result = numbers.reduce((total, curVal) => total + curVal);
+        return result;
+    }
+    return 0;
 }
 
 /**
@@ -13,8 +17,13 @@ function sum (numbers) {
  * `doubleNumbers(numbers): Array`
  * Given an array of numbers, return an array where each element is double its original value.
  */
-function doubleNumbers (numbers) {
-  // TODO: Add your solution here.
+function doubleNumbers(numbers) {
+    // TODO: Add your solution here.
+    let total = [];
+    for (let num of numbers) {
+        total.push(num * 2);
+    }
+    return total;
 }
 
 /**
@@ -22,8 +31,14 @@ function doubleNumbers (numbers) {
  * `doubleCharacters(chars): Array`
  * Given a string, return an array where each element is double its original value. (e.g. 'ab' -> 'aabb')
  */
-function doubleCharacters (chars) {
-  // TODO: Add your solution here.
+function doubleCharacters(chars) {
+    // TODO: Add your solution here.
+    let doubleChar = [];
+    for (let i = 0; i < chars.length; i++) {
+        doubleChar.push(chars[i]);
+        doubleChar.push(chars[i]);
+    }
+    return doubleChar.join("");
 }
 
 /**
@@ -31,8 +46,12 @@ function doubleCharacters (chars) {
  * `backwardsify(array): Array`
  * Reverse or flip the values in the array.
  */
-function backwardsify (array) {
-  // TODO: Add your solution here.
+function backwardsify(array) {
+    // TODO: Add your solution here.
+    if (array.length > 0) {
+        return array.reverse();
+    }
+    return {};
 }
 
 /**
@@ -40,8 +59,16 @@ function backwardsify (array) {
  * `interleave(list1, list2): Array`
  * Should return a combined single array, with individual values alternating between list1 & list2.
  */
-function interleave (list1, list2) {
-  // TODO: Add your solution here.
+function interleave(arr1, arr2) {
+    if (arr1.length == arr2.length) {
+        let merge = [];
+        for (let i = 0; i < arr1.length; i++) {
+            merge.push(arr1[i], arr2[i]);
+        }
+
+        return merge;
+    }
+    return null;
 }
 
 /**
@@ -49,14 +76,21 @@ function interleave (list1, list2) {
  * `makeRange(count, fillString): Array`
  * Return array of `count` length where each element is set to `fillString`
  */
-function makeRange (count, fillString) {
-  // TODO: Add your solution here.
+function makeRange(count, fillString) {
+    let result = [];
+    let length = parseInt(count);
+
+    for (let i = 0; i < length; i++) {
+        result.push(fillString);
+    }
+    return result;
 }
 
 /**
  * @instuction
  * `countByFirstLetter(words): Object`
- * Given an array of words, return an object using *lowercase* letters as keys. The value should be a Number, with the count of words with same starting character.
+ * Given an array of words, return an object using *lowercase* letters as keys.
+ * The value should be a Number, with the count of words with same starting character.
  *
  * @example
  *
@@ -70,15 +104,25 @@ function makeRange (count, fillString) {
  * // }
  */
 
-function countByFirstLetter (words) {
-  // TODO: Add your solution here.
+function countByFirstLetter(arr) {
+    return arr.reduce((tally, curEl) => {
+        let firstL = curEl[0];
+        console.log(firstL);
+        if (tally[firstL]) {
+            tally[firstL]++;
+        } else {
+            tally[firstL] = 1;
+        }
+        return tally;
+    }, {});
 }
 
 /**
  * @instructions
  * `groupByFirstLetter(words): Object`
  * Given an array of words, return an object using *lowercase* letters as keys.
- * The key value should be an array with only the words sharing a starting character.
+ * The key value should be an array with only
+ * the words sharing a starting character.
  *
  * @example
  *
@@ -93,25 +137,36 @@ function countByFirstLetter (words) {
  *
  */
 
-function groupByFirstLetter (words) {
-  // TODO: Add your solution here.
+function groupByFirstLetter(arr) {
+    if (arr.length > 0) {
+        return arr.reduce((tally, curEl) => {
+            let firstL = curEl[0].toLowerCase();
+            console.log(firstL);
+            if (!tally[firstL]) {
+                tally[firstL] = [];
+            }
+            tally[firstL].push(curEl.toLowerCase());
+            return tally;
+        }, {});
+    } else {
+        return {};
+    }
 }
-
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
 
-if (typeof exports !== 'undefined') {
-  // IGNORE: Test/Env Detected
-  // For Node/Non-browser test env
-  module.exports = {
-    sum,
-    doubleCharacters,
-    doubleNumbers,
-    backwardsify,
-    interleave,
-    makeRange,
-    countByFirstLetter,
-    groupByFirstLetter
-  }
+if (typeof exports !== "undefined") {
+    // IGNORE: Test/Env Detected
+    // For Node/Non-browser test env
+    module.exports = {
+        sum,
+        doubleCharacters,
+        doubleNumbers,
+        backwardsify,
+        interleave,
+        makeRange,
+        countByFirstLetter,
+        groupByFirstLetter,
+    };
 }
